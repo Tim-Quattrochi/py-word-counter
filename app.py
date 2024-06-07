@@ -40,6 +40,27 @@ class MyHashTable:
             # not found, add it.
         self.table[idx].append([key, value])
 
+    def get_value(self, key):
+        hash_value = self._hash(key)
+        idx = hash_value % len(self.table)
+
+        for pair in self.table[idx]:
+            if pair[0] == key:
+                return pair[1]
+
+        raise KeyError(key)
+
+    def delete(self, key):
+        hash_value = self._hash(key)
+        idx = hash_value % len(self.table)
+
+        for i, pair in enumerate(self.table[idx]):
+            if pair[0] == key:
+                del self.table[idx][i]
+                return
+
+        raise KeyError(key)
+
     def _hash(self, key):
         return djb2(key)
 
@@ -51,6 +72,8 @@ class MyHashTable:
 hash_table = MyHashTable(20)
 
 insert = hash_table.insert("hello", "there")
+get_val_frm_table = hash_table.get_value("hello")
+# delete = hash_table.delete("hello")
 
 
 print(hash_table)
