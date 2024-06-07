@@ -18,9 +18,13 @@ def djb2(key):
 class MyHashTable:
     def __init__(self, size=10):
         self.size = size
+        self.count = 0
         self.table = [[] for _ in range(size)]
 
     def insert(self, key, value):
+        if self.count / self.size > 0.75:
+            self.resize()
+
         hash_value = self._hash(key)
         idx = hash_value % len(self.table)
 
@@ -30,6 +34,18 @@ class MyHashTable:
                 return
             # not found, add it.
         self.table[idx].append([key, value])
+        self.count += 1
+
+   # '_' means the method is meant to for internal use.
+    def _resize(self):
+        new_table = [[] for _ in range(self.size * 2)]
+        for i in range(self.size):
+            for key, value in self.table[i]:
+                hash_value = self._hash(key)
+                idx = hash_value % len(new_table)
+                new_table[idx].append([key, value])
+        self.size *= 2
+        self.table = new_table
 
     def get_value(self, key):
         hash_value = self._hash(key)
