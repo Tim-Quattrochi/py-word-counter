@@ -38,7 +38,7 @@ This project uses a custom hash table to count word frequencies in a book.
 
 I recommend using a virtual environment to run this program. To create a virtual environment, run the following command:
 
-### 💻 Windows
+### Windows
 
 ```cmd
 python -m venv venv
@@ -56,7 +56,7 @@ Run the `app.py` script to start the program:
 python app.py
 ```
 
-### 🍏 MacOS/Linux 🐧
+### MacOS/Linux
 
 ```bash
 python3 -m venv venv
@@ -108,3 +108,7 @@ python3 -m unittest test_hash_table.py
 Book used as dataset:
 
 > Gray, J. (1920). The other Miller girl. New York: Chas. Scribners Sons. [Link](https://www.gutenberg.org/cache/epub/73780/pg73780.txt)
+
+---
+
+[⬆️ Back to Top](#hash-table-implementation-in-python)
