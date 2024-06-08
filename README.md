@@ -85,7 +85,7 @@ The program implements a hash table with chaining and uses it to count word freq
 - `resize(int)`: Resizes the hash table to the given size.
 - `items()`: Returns a list or generator of all key-value pairs in the hash table.
 
-## 🧪 Tests
+## Tests
 
 I am using the `unittest` module to test the hash table implementation. To run the tests, use the following command:
 
