@@ -1,4 +1,6 @@
 from hash_class import MyHashTable
+import os
+import re
 # Reference slides: https://docs.google.com/presentation/d/14N_E4uZL6XqT4bejTkRYDq7sps-hBxN8VQTGXJCpGxg/edit#slide=id.p
 
 # 1. Implement a hash function.
@@ -16,12 +18,32 @@ from hash_class import MyHashTable
 
 # djb2 hash function implementation.
 
+book_path = os.path.join(os.path.dirname(__file__), './books/miller-girl.txt')
+
+
+def process_data(file):
+    if not os.path.isfile(file):
+        raise FileNotFoundError("File not found")
+
+    if not os.path.isabs(file):
+        raise ValueError(f"{file} is not an absolute path.")
+
+    with open(file, 'r') as f:
+        data = f.read()
+        # remove punctuations with regex
+        data = re.sub(r'[^\w\s]', '', data)
+        data = data.lower()
+        return data
+
 
 def main():
-    hash_table = MyHashTable(20)
-    hash_table.insert("hello", "there")
-    print(hash_table.get_value("hello"))
-    # hash_table.delete("hello")
+    hash_table = MyHashTable(30000)
+    words = process_data(book_path).split()
+    for word in words:
+        try:
+            hash_table.insert(word, hash_table.get_value(word) + 1)
+        except KeyError:  # if the word is not found, add it.
+            hash_table.insert(word, 1)
     print(hash_table)
 
 
