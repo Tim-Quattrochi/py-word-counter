@@ -12,6 +12,7 @@ This project uses a custom hash table to count word frequencies in a book.
   - [💻 Windows](#windows)
   - [🍏/🐧 MacOS/Linux](#macoslinux)
 - [⚙️ Functionality](#functionality)
+- [🧪 Tests](#tests)
 - [📚 References](#references)
 - [🖋️ Citation](#citation)
 
@@ -84,9 +85,19 @@ The program implements a hash table with chaining and uses it to count word freq
 - `resize(int)`: Resizes the hash table to the given size.
 - `items()`: Returns a list or generator of all key-value pairs in the hash table.
 
+## 🧪 Tests
+
+I am using the `unittest` module to test the hash table implementation. To run the tests, use the following command:
+
+```bash
+python3 -m unittest test_hash_table.py
+```
+
 ## References
 
 - [Hash Table Slides](https://docs.google.com/presentation/d/14N_E4uZL6XqT4bejTkRYDq7sps-hBxN8VQTGXJCpGxg/edit#slide=id.p)
+
+- [unittest — Unit testing framework](https://docs.python.org/3/library/unittest.html)
 
 - [reading txt files in python](https://www.geeksforgeeks.org/reading-writing-text-files-python/)
 
