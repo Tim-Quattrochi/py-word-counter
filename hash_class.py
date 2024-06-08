@@ -74,3 +74,9 @@ class MyHashTable:
     # method for inspecting table.
     def __str__(self):
         return str(self.table)
+
+    # method for returning key-value pairs.
+    def items(self):
+        for bucket in self.table:
+            for pair in bucket:
+                yield pair
